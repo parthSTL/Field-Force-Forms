@@ -4626,52 +4626,66 @@ window.onload = function() {
 //   }
 }
 </script>
+<link rel="stylesheet" href="/static/css/normalize.css">
+<link rel="stylesheet" href="/static/css/styles.css">
 </head>   
 <body>
-
+  <nav class="navbar navbar-inverse ">
+    <a href="#" class="navbar-brand">
+        <!-- Logo Image -->
+        <img src="https://www.stl.tech/header_files/Sterlite_logo.png" width="45" alt="" class="d-inline-block align-middle mr-2">
+        <!-- Logo Text -->
+        <!-- <span class="text-uppercase font-weight-bold">Sterlite Technologies Ltd</span> -->
+    </a>
+    <ul class="nav navbar-nav center">
+      <li><a href="/">Home</a></li>
+      <li><a href="#">Link</a></li>
+    </ul>
+    <!-- <p class="navbar-text">Some text</p> -->
+  </nav>
+<div class="card-wrapper">
+<div class="card">
 <h1 style="text-align: center">T-Fiber Measurement Book</h1>
-
-<form name="form1" id="form1" action='/query',method="POST">
-Package: <select class="form-select" aria-label="Default select example" name="package" id="package" >
+<form class="form" name="form1" id="form1" action='/query',method="POST">
+  <label for="text">Package</label>
+  <select class="field" aria-label="Default select example" name="package" id="package" > -->
     <option value="" selected="selected">Select Package</option>
   </select>
-  <br><br>
-Zone: <select name="zone" id="zone" class="form-select" aria-label="Default select example">
+  <label for="text">Zone</label>
+  <select name="zone" id="zone" class="field" aria-label="Default select example">
     <option value="" selected="selected">Select Zone</option>
   </select>
-  <br><br>
-District: <select name="district" id="district" class="form-select" aria-label="Default select example">
+  <label for="text">District</label>
+  <select name="district" id="district" class="field" aria-label="Default select example">
     <option value="" selected="selected">Select District</option>
   </select>
-  <br><br>
-Mandal: <select name="mandal" id="mandal" class="form-select" aria-label="Default select example">
-  <option value="" selected="selected">Select Mandal</option>
-</select>
-<br><br>
-From GP: <select name="from_gp" id="from_gp" class="form-select" aria-label="Default select example">
-  <option value="" selected="selected">Select From GP</option>
-</select>
-<br><br>
-To GP: <select name="to_gp" id="to_gp" class="form-select" aria-label="Default select example">
-  <option value="" selected="selected">Select To GP</option>
-</select>
-<br><br>
-Span ID: <select name="span_id" id="span_id" class="form-select" aria-label="Default select example">
-  <option value="" selected="selected">Select Span ID</option>
-</select>
-<br><br>
-Form: <select name="form" id="form" class="form-select" aria-label="Default select example">
-  <option value="hdd" selected="selected">HDD</option>
-  <option value="tnd" selected="selected">T&D</option>
-  <option value="dit" selected="selected">DIT</option>
-  <option value="drt" selected="selected">DRT</option>
-  <option value="blowing" selected="selected">Blowing</option>
-  
-</select>
-<br><br>
-
-<input type="submit" value="Submit">  
+  <label for="text">Mandal</label>
+  <select name="mandal" id="mandal" class="field" aria-label="Default select example">
+    <option value="" selected="selected">Select Mandal</option>
+  </select>
+  <label for="text">From GP</label>
+  <select name="from_gp" id="from_gp" class="field" aria-label="Default select example">
+    <option value="" selected="selected">Select From GP</option>
+  </select>
+  <label for="text">To GP</label>
+  <select name="to_gp" id="to_gp" class="field" aria-label="Default select example">
+    <option value="" selected="selected">Select To GP</option>
+  </select>
+  <label for="text">Span ID</label>
+  <select name="span_id" id="span_id" class="field" aria-label="Default select example">
+    <option value="" selected="selected">Select Span ID</option>
+  </select>
+  <label for="text">Form </label>
+  <select name="form" id="form" class="field" aria-label="Default select example">
+    <option value="hdd" selected="selected">HDD</option>
+    <option value="tnd" selected="selected">T&D</option>
+    <option value="dit" selected="selected">DIT</option>
+    <option value="drt" selected="selected">DRT</option>
+    <option value="blowing" selected="selected">Blowing</option>
+  </select>
+<input type="submit" value="Submit" class="btn">  
 </form>
-
+</div>
+</div>
 </body>
 </html>

@@ -1,0 +1,360 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Measurement Book</title>
+{% endblock %}
+
+{% block body %}
+<nav class="navbar navbar-inverse">
+    <ul class="nav navbar-nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="#">Link</a></li>
+    </ul>
+    <p class="navbar-text">Some text</p>
+  </nav>
+<div class="content">
+    <h1 style="text-align: center">Data of {{ form }} Form for {{span_id}}</h1>
+     
+    {% if span_data|length < 1 %}
+    <h4 style="text-align: center">There are no data available for {{span_id}}</h4>
+    {% else %}
+    
+    <div>
+
+        <form name="form2" id="form2" action="/query", method="POST">
+            <label for="prikey">Prikey:</label>
+            <input type="number" id="prikey" name="prikey" >
+            <input type="hidden" id="span_id" name="span_id" value="{{span_id}}"  >
+            <input type="hidden" id="form" name="form" value="{{form}}">
+            <select name="file_type" id="file_type">
+                <option value="pdf">PDF</option>
+                <option value="excel">Excel</option>
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    {% if form == "HDD" %}
+    <table class="table table-striped">
+        <tr>
+            <th>Prikey</th>
+            <th>User</th>
+            <th>Upload Time</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Span ID</th>
+            <th>Side of Road</th>
+            <th>Chainage From</th>
+            <th>Chainage To</th>
+            <th>Length</th>
+            <th>Graph As Built</th>
+            <th>Depth</th>
+            <th>Bore Reamer Diameter</th>
+            <th>Ducts</th>
+            <th>Remark</th>
+            <th>Start Latitude</th>
+            <th>Start Longitude</th>
+            <th>End Latitude</th>
+            <th>End Longitude</th>
+            
+        </tr>
+        {% for data in span_data %}
+            <tr>
+                <td>{{ data.prikey }}</td>
+                <td>{{ data.User }}</td>
+                <td>{{ data.UploadTime }}</td>
+                <td>{{ data.start }}</td>
+                <td>{{ data.end }}</td>
+                <td>{{ data.Span_ID }}</td>
+                <td>{{ data.Side_of_the_road }}</td>
+                <td>{{ data.Chainage_From }}</td>
+                <td>{{ data.Chainage_To }}</td>
+                <td>{{ data.Length }}</td>
+                <td>{{ data.Graph_as_built_made }}</td>
+                <td>{{ data.Depth }}</td>
+                <td>{{ data.Bore_reamer_diameter }}</td>
+                <td>{{ data.Ducts }}</td>
+                <td>{{ data.Remark }}</td>
+                <td>{{ data.start_lat }}</td>
+                <td>{{ data.start_long }}</td>
+                <td>{{ data.end_lat }}</td>
+                <td>{{ data.end_long }}</td>
+
+                
+            </tr>
+        {% endfor %}
+    </table>
+    
+    {% elif form == "DIT" %}
+    <table class="table table-striped">
+        <tr>
+            <th>Prikey</th>
+            <th>User</th>
+            <th>Upload Time</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Span ID</th>
+            <th>Chainage From</th>
+            <th>Chainage To</th>
+            <th>Duct Length</th>
+            <th>Air Test Result</th>
+            <th>Sponge Test Result</th>
+            <th>Shuttle Test Result</th>
+            <th>Pressure Test 5Bar 30 Min</th>
+            <th>Pressure Test 10Bar 10 Min</th>
+            <th>Pressure Obs after 10/30 Min</th>
+            <th>Drop in Pressure(A-B)</th>
+            <th>Test Result</th>
+            <th>MB Duct Missing From</th>
+            <th>MB Duct Missing to</th>
+            <th>MB Duct Missing Length</th>
+            <th>Coupler Latitude</th>
+            <th>Coupler Longitude</th>
+            <th>Remarks</th>
+
+
+        </tr>
+        {% for data in span_data %}
+            <tr>
+                <td>{{ data.prikey }}</td>
+                <td>{{ data.User }}</td>
+                <td>{{ data.UploadTime }}</td>
+                <td>{{ data.start }}</td>
+                <td>{{ data.end }}</td>
+                <td>{{ data.Span_ID }}</td>
+                <td>{{ data.Chainage_From }}</td>
+                <td>{{ data.Chainage_To }}</td>
+                <td>{{ data.DuctLength }}</td>
+                <td>{{ data.Air_test_Result }}</td>
+                <td>{{ data.Sponge_test_result }}</td>
+                <td>{{ data.Shuttle_test_result }}</td>
+                <td>{{ data.Pressure_test_5_bar_30_min }}</td>
+                <td>{{ data.Pressure_test_10_bar_10_min }}</td>
+                <td>{{ data.Pressure_obs_10_30_min }}</td>
+                <td>{{ data.Pressure_test_drop_in_pressure }}</td>
+                <td>{{ data.test_result }}</td>
+                <td>{{ data.mb_duct_missing_sec_from }}</td>
+                <td>{{ data.mb_duct_missing_sec_to }}</td>
+                <td>{{ data.mb_duct_missing_section_length }}</td>
+                <td>{{ data.coupler_lat }}</td>
+                <td>{{ data.coupler_long }}</td>
+                <td>{{ data.remarks }}</td>
+                
+
+                
+            </tr>
+        {% endfor %}
+    </table>
+
+    {% elif form == "DRT" %}
+    <table class="table table-striped">
+        <tr>
+            <th>Prikey</th>
+            <th>User</th>
+            <th>Upload Time</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Span ID</th>
+            <th>Chamber 1 Lat</th>
+            <th>Chamber 1 Long</th>
+            <th>Chamber 1 Condition</th>
+            <th>Chamber1 Route Marker Avail</th>
+            <th>Chamber 2 Lat</th>
+            <th>Chamber 2 Long</th>
+            <th>Chamber 2 Condition</th>
+            <th>Chamber2 Route Marker Avail</th>
+            <th>Chainage From</th>
+            <th>Chainage To</th>
+            <th>Duct Length</th>
+            <th>Duct Dam/Punc Lat</th>
+            <th>Duct Dam/Punc Long</th>
+            <th>Duct Dam/Punc Ch From</th>
+            <th>Duct Dam/Punc Ch To</th>
+            <th>Duct Dam/Punc Length</th>
+            <th>Duct Miss/Non Use Lat</th>
+            <th>Duct Miss/Non Use Long</th>
+            <th>Duct Miss/Non Use Ch From</th>
+            <th>Duct Miss/Non Use Ch To</th>
+            <th>Duct Miss/Non Use Length</th>
+            <th>Remarks</th>
+            
+
+
+        </tr>
+        {% for data in span_data %}
+            <tr>
+                <td>{{ data.prikey }}</td>
+                <td>{{ data.User }}</td>
+                <td>{{ data.UploadTime }}</td>
+                <td>{{ data.start }}</td>
+                <td>{{ data.end }}</td>
+                <td>{{ data.Span_ID }}</td>
+                <td>{{ data.chamber1_lat }}</td>
+                <td>{{ data.chamber1_long }}</td>
+                <td>{{ data.Chamber1_condition }}</td>
+                <td>{{ data.Chamber1_route_marker }}</td>
+                <td>{{ data.chamber2_lat }}</td>
+                <td>{{ data.chamber2_long }}</td>
+                <td>{{ data.Chamber2_condition }}</td>
+                <td>{{ data.Chambe2_route_marker }}</td>
+                <td>{{ data.ch_from }}</td>
+                <td>{{ data.ch_to }}</td>
+                <td>{{ data.Length }}</td>
+                <td>{{ data.Duct_dam_punct_lat }}</td>
+                <td>{{ data.Duct_dam_punct_long }}</td>
+                <td>{{ data.Duct_dam_punct_loc_ch_from }}</td>
+                <td>{{ data.Duct_dam_punct_loc_ch_to }}</td>
+                <td>{{ data.Duct_dam_punct_loc_Length }}</td>
+                <td>{{ data.Duct_miss_lat }}</td>
+                <td>{{ data.Duct_miss_long }}</td>
+                <td>{{ data.Duct_miss_ch_from }}</td>
+                <td>{{ data.Duct_miss_ch_to }}</td>
+                <td>{{ data.Duct_miss_ch_Length }}</td>
+                <td>{{ data.Remark }}</td>
+                
+                
+
+                
+            </tr>
+        {% endfor %}
+    </table>
+
+    {% elif form == "T&D" %}
+    <table class="table table-striped">
+        <tr>
+            <th>Prikey</th>
+            <th>User</th>
+            <th>Upload Time</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Span ID</th>
+            <th>Chainage From</th>
+            <th>Chainage To</th>
+            <th>Actual Length</th>
+            <th>Trench Side</th>
+            <th>Offset</th>
+            <th>Depth</th>
+            <th>Duct laid</th>
+            <th>Method Execution</th>
+            <th>Crossing</th>
+            <th>Type of strata</th>
+            <th>DWC</th>
+            <th>GI Pipe</th>
+            <th>RCC Pipe</th>
+            <th>PCC</th>
+            <th>RCC Chamber</th>
+            <th>RCC Route Marker</th>
+            <th>Start Point Lat</th>
+            <th>Start Point Long</th>
+            <th>End Point Lat</th>
+            <th>End Point Long</th>
+            <th>Remarks</th>
+            
+
+
+        </tr>
+        {% for data in span_data %}
+            <tr>
+                <td>{{ data.prikey }}</td>
+                <td>{{ data.User }}</td>
+                <td>{{ data.UploadTime }}</td>
+                <td>{{ data.start }}</td>
+                <td>{{ data.end }}</td>
+                <td>{{ data.Span_ID }}</td>
+                <td>{{ data.Chainage_From }}</td>
+                <td>{{ data.Chainage_To }}</td>
+                <td>{{ data.Length }}</td>
+                <td>{{ data.Trench_Side }}</td>
+                <td>{{ data.Offset}}</td>
+                <td>{{ data.Depth }}</td>
+                <td>{{ data.Duct_Laid }}</td>
+                <td>{{ data.Method_Execution }}</td>
+                <td>{{ data.Crossing }}</td>
+                <td>{{ data.Strata_Type }}</td>
+                <td>{{ data.Protect_Dwc }}</td>
+                <td>{{ data.Protect_Gi }}</td>
+                <td>{{ data.Protect_Rcc}}</td>
+                <td>{{ data.Protect_Pcc }}</td>
+                <td>{{ data.Rcc_Chamber }}</td>
+                <td>{{ data.Rcc_Marker }}</td>
+                <td>{{ data.from_loc_lat }}</td>
+                <td>{{ data.from_loc_long }}</td>
+                <td>{{ data.to_loc_long }}</td>
+                <td>{{ data.Remark }}</td>
+                
+                
+
+                
+            </tr>
+        {% endfor %}
+    </table>
+
+    {% elif form == "Blowing" %}
+    <table class="table table-striped">
+        <tr>
+            <th>Prikey</th>
+            <th>User</th>
+            <th>Upload Time</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Span ID</th>
+            <th>Chainage From</th>
+            <th>Chainage To</th>
+            <th>Length</th>
+            <th>Chamber From</th>
+            <th>Chamber To</th>
+            <th>Size of OFC</th>
+            <th>OFC Cable ID</th>
+            <th>Cable Start</th>
+            <th>Cable End</th>
+            <th>Cable length</th>
+            <th>Chamber A End Reading</th>
+            <th>Chamber A entry Reading</th>
+            <th>Chamber A End Slack Loop Length</th>
+            <th>Chamber B Entry Reading</th>
+            <th>Chamber b End Reading</th>
+            <th>Chamber B Slack Loop Len</th>
+            <th>Remarks</th>
+            
+
+
+        </tr>
+        {% for data in span_data %}
+            <tr>
+                <td>{{ data.prikey }}</td>
+                <td>{{ data.User }}</td>
+                <td>{{ data.UploadTime }}</td>
+                <td>{{ data.start }}</td>
+                <td>{{ data.end }}</td>
+                <td>{{ data.Span_ID }}</td>
+                <td>{{ data.Chainage_From }}</td>
+                <td>{{ data.Chainage_To }}</td>
+                <td>{{ data.Length }}</td>
+                <td>{{ data.chamber_from }}</td>
+                <td>{{ data.chamber_to}}</td>
+                <td>{{ data.size_of_ofc }}</td>
+                <td>{{ data.ofc_cable_id }}</td>
+                <td>{{ data.cable_len_start }}</td>
+                <td>{{ data.cable_len_end}}</td>
+                <td>{{ data.Total_cable_length }}</td>
+                <td>{{ data.chamber_a_end_reading }}</td>
+                <td>{{ data.chamber_a_entry_reading }}</td>
+                <td>{{ data.chamber_a_end_slack_loop_length}}</td>
+                <td>{{ data.chamber_b_entry_reading }}</td>
+                <td>{{ data.chamber_b_end_reading }}</td>
+                <td>{{ data.chamber_b_end_slack_loop_length }}</td>
+                <td>{{ data.Remarks }}</td>
+                
+                
+
+                
+            </tr>
+        {% endfor %}
+    </table>
+
+    {% endif %}
+    
+    {% endif %}
+
+
+    
+{% endblock %}

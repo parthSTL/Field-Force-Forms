@@ -1,10 +1,6 @@
-import sys, os
 import time
+start_time = time.time()
 
-counter = 0
-while (True):
-    os.system("python "+ "load_data.cpython-39.pyc")
-    counter+=1
-    print(counter)
-    time.sleep(1)
-
+from load_data import Load
+Load.load_database()
+print("--- %s seconds ---" % (time.time() - start_time))

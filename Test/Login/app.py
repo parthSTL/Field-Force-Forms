@@ -20,8 +20,10 @@ from db import init_db_command
 from user import User
 
 # Configuration
-GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", None)
-GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET", None)
+# GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", None)
+GOOGLE_CLIENT_ID="1083438753412-gtko9i3lqn3fe1d3f44hvkcf5vkdftik.apps.googleusercontent.com"
+# GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET", None)
+GOOGLE_CLIENT_SECRET="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"
 GOOGLE_DISCOVERY_URL = (
     "https://accounts.google.com/.well-known/openid-configuration"
 )
@@ -121,6 +123,7 @@ def callback():
     # including their Google Profile Image and Email
     userinfo_endpoint = google_provider_cfg["userinfo_endpoint"]
     uri, headers, body = client.add_token(userinfo_endpoint)
+    userinfo_response = requests.get(uri, headers=headers, data=body, verify=False)
     userinfo_response = requests.get(uri, headers=headers, data=body)
 
     # We want to make sure their email is verified.
@@ -159,8 +162,10 @@ def logout():
 
 
 def get_google_provider_cfg():
+    # return requests.get(GOOGLE_DISCOVERY_URL, verify=False).json()
     return requests.get(GOOGLE_DISCOVERY_URL).json()
 
 
 if __name__ == "__main__":
-    app.run(ssl_context="adhoc",debug=True)
+    # app.run(ssl_context="adhoc",debug=True)
+    app.run(debug=True)

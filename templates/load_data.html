@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Measurement Book</title>
+{% endblock %}
+{% block body %}
+<nav class="navbar navbar-inverse ">
+    <a href="#" class="navbar-brand">
+        <!-- Logo Image -->
+        <img src="https://www.stl.tech/header_files/Sterlite_logo.png" width="45" alt="" class="d-inline-block align-middle mr-2">
+        <!-- Logo Text -->
+        <!-- <span class="text-uppercase font-weight-bold">Sterlite Technologies Ltd</span> -->
+    </a>
+    <ul class="nav navbar-nav center">
+      <li><a href="/">Home</a></li>
+      <li><a href="/load_data">Refresh Data</a></li>
+    </ul>
+    <!-- <p class="navbar-text">Some text</p> -->
+  </nav>
+<div class="card-wrapper">
+<div class="card">
+<h1 style="text-align: center">T-Fiber Measurement Book</h1>
+<p>Data Loaded Successfully</p>
+{% endblock %}

@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm 
 from wtforms import SelectField
 from edit_excel import Create_connection_xl, HDD_form_xl
-
+from load_data import Load
 from flask import send_file
 import os
 
@@ -268,6 +268,11 @@ def index():
     else:
          # In Todo class database ordering using date
         return render_template('dynamicdrop.html')
+
+@app.route("/load_data",methods=['POST','GET']) # What will be there in home page
+def load_Data():
+    Load.load_database()
+    return render_template('load_data.html')
 
 @app.route("/query",methods=['POST','GET'])
 def query():
